@@ -3,12 +3,12 @@ services:
 db:
 build:
 context: .
-dockerfile: Dockerfile-db
+dockerfile: Dockerfile
 volumes:
 - postgres_data:/var/lib/postgresql/data
 environment:
 POSTGRES_DB: myapp_development
-POSTGRES_USER: mybudgetapp
+POSTGRES_USER: myapp
 POSTGRES_PASSWORD: password
 ports:
 - "5432:5432"
@@ -22,7 +22,7 @@ ports:
 depends_on:
 - db
 environment:
-DATABASE_URL: postgres://mybudgetapp:password@db:5432/myapp_development
+DATABASE_URL: postgres://myapp:password@db:5432/myapp_development
 volumes:
 postgres_data:
 
